@@ -6,7 +6,7 @@ class PlanExecutor:
         self.env = environment
         self.robots = {r.id: r for r in robots}
         self.packages = {p.id: p for p in packages}
-        self.gui = gui  # referencia a la interfaz pygame (opcional)
+        self.gui = gui  # reference to pygame (optional)
 
     def execute_action(self, action_name, params):
         try:
@@ -46,7 +46,7 @@ class PlanExecutor:
 
 
         except Exception as e:
-            print(f"Error ejecutando acción {action_name}: {e}")
+            print(f"Error executing action {action_name}: {e}")
             return False
 
     def _parse_zone(self, name):
@@ -70,23 +70,18 @@ class PlanExecutor:
             with open(plan_file) as f:
                 lines = [l.strip().strip("()") for l in f if l.strip() and not l.startswith(";")]
         except FileNotFoundError:
-            print("No se encontró plan.txt")
+            print("File not found plan.txt")
             return
 
         print("Ejecutando plan...")
-        #lastparam  = ''
-        for i, line in enumerate(lines):
+        for line in lines:
             parts = line.split()
             action, params = parts[0], parts[1:]
             print(f"→ {action} {' '.join(params)}")
 
-            # Ejecutar acción
+            # Executing action
             self.execute_action(action, params)
 
-
-            # Code to move  the robot  back to its original position 
-            if i == len(lines) -1 :
-                lastparam = params[-1]
             # Redibujar GUI
             if self.gui:
                 self.gui.draw()
@@ -96,11 +91,7 @@ class PlanExecutor:
                 pygame.event.pump()
 
             # Pequeña pausa entre acciones
+            time.sleep(0.7)
 
-            time.sleep(0.6)
+        print("Plan executed completely.")
 
-        #self.execute_action('move', params=['robot1', lastparam, 'zone_0_0'])
-        robot = self.robots['robot1']
-        robot.position = (0,0)
-
-        print("Plan ejecutado completamente.")
