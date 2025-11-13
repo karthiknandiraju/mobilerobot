@@ -93,7 +93,7 @@ class GUI:
             self.screen.blit(text, text_rect)
 
     def handle_click(self, pos):
-        """Detecta clics en los botones y ejecuta las acciones correspondientes"""
+        """Detects clicks in the buttons and executes the corrresponding actions"""
         if self.buttons["extract"].collidepoint(pos):
             print("Extracting current state...")
             extract_state_to_pddl(self.env, self.robots, self.packages)

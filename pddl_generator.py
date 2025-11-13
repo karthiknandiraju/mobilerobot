@@ -1,6 +1,6 @@
 def extract_state_to_pddl(environment, robots, packages, output_file="problem.pddl"):
     """
-    Genera un archivo problem.pddl con el estado actual del entorno.
+    Generates problem.pddl file with the current state.
     """
     with open(output_file, "w") as f:
         f.write("(define (problem warehouse-delivery)\n")
@@ -44,4 +44,4 @@ def extract_state_to_pddl(environment, robots, packages, output_file="problem.pd
             f.write(f"   (at-package {pkg.id} zone_{dx}_{dy})\n")
         f.write("  )\n )\n)\n")
 
-    print(f"Archivo {output_file} generado correctamente.")
+    print(f"File {output_file} generated correctly.")
