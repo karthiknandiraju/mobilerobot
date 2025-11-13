@@ -59,12 +59,12 @@
  )
 
  (:init
-  (at-robot robot1 zone_0_0)
+  (at-robot robot1 zone_0_3)
   (robot-free robot1)
-  (at-package pkg1 zone_5_2)
-  (at-package pkg2 zone_6_-2)
-  (at-package pkg3 zone_0_3)
-  (at-package pkg4 zone_2_-2)
+  (at-package pkg1 zone_2_2)
+  (at-package pkg2 zone_1_3)
+  (at-package pkg3 zone_3_5)
+  (at-package pkg4 zone_5_2)
   (connected zone_0_0 zone_0_1)
   (connected zone_0_0 zone_1_0)
   (connected zone_0_1 zone_0_2)

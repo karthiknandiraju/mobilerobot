@@ -73,7 +73,7 @@ class PlanExecutor:
             print("File not found plan.txt")
             return
 
-        print("Ejecutando plan...")
+        print("Execution plan...")
         for line in lines:
             parts = line.split()
             action, params = parts[0], parts[1:]
@@ -92,6 +92,8 @@ class PlanExecutor:
 
             # Pequeña pausa entre acciones
             time.sleep(0.7)
+        robot = self.robots['robot1']
+        robot.position = (0, 0)
 
         print("Plan executed completely.")
 

@@ -296,12 +296,12 @@ begin_mutex_group
 1 0
 end_mutex_group
 begin_state
+3
 0
-0
-40
-43
-6
-15
+16
+10
+26
+37
 end_state
 begin_goal
 4
