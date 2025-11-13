@@ -36,6 +36,10 @@ class GUI:
             "execute": pygame.Rect(390, self.height - 60, 150, 35),
         }
 
+        # Create one persistent PlanExecutor instance
+        #self.executor = PlanExecutor(self.env, self.robots, self.packages, gui=self)
+
+
     def draw(self):
         self.screen.fill(self.WHITE)
 
@@ -105,6 +109,8 @@ class GUI:
             call_planner()
 
         elif self.buttons["execute"].collidepoint(pos):
+            print("Running planner before executing plan...")
+            call_planner()
             print("Executing plan...")
             executor = PlanExecutor(self.env, self.robots, self.packages, gui=self)
             executor.execute_plan()

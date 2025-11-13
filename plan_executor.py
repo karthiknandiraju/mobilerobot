@@ -37,6 +37,14 @@ class PlanExecutor:
                 pkg.position = robot.position
                 return True
 
+            if self.gui:
+                self.gui.draw()
+                pygame.display.flip()
+                pygame.event.pump()
+
+            return True
+
+
         except Exception as e:
             print(f"Error ejecutando acción {action_name}: {e}")
             return False
@@ -66,7 +74,8 @@ class PlanExecutor:
             return
 
         print("Ejecutando plan...")
-        for line in lines:
+        #lastparam  = ''
+        for i, line in enumerate(lines):
             parts = line.split()
             action, params = parts[0], parts[1:]
             print(f"→ {action} {' '.join(params)}")
@@ -74,11 +83,24 @@ class PlanExecutor:
             # Ejecutar acción
             self.execute_action(action, params)
 
+
+            # Code to move  the robot  back to its original position 
+            if i == len(lines) -1 :
+                lastparam = params[-1]
             # Redibujar GUI
             if self.gui:
                 self.gui.draw()
+                #New Stuff
+                pygame.display.flip()
+                #New Stuff
+                pygame.event.pump()
 
             # Pequeña pausa entre acciones
-            time.sleep(0.7)
+
+            time.sleep(0.6)
+
+        #self.execute_action('move', params=['robot1', lastparam, 'zone_0_0'])
+        robot = self.robots['robot1']
+        robot.position = (0,0)
 
         print("Plan ejecutado completamente.")

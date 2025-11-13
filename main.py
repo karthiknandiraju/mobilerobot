@@ -6,7 +6,7 @@ from gui import GUI
 
 def main():
     env = Environment(width=7, height=7)
-    robots = [Robot("robot1", position=(0, 0))]
+    robots = [Robot("robot1", position=(0, 3))]
     packages = [
         Package("pkg1", (2, 2), (5, 5)),
         Package("pkg2", (1, 3), (6, 1)),

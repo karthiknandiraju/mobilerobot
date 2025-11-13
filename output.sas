@@ -298,10 +298,10 @@ end_mutex_group
 begin_state
 0
 0
-16
-10
-26
-37
+40
+43
+6
+15
 end_state
 begin_goal
 4
