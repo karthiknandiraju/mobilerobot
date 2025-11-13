@@ -6,7 +6,7 @@ class PlanExecutor:
         self.env = environment
         self.robots = {r.id: r for r in robots}
         self.packages = {p.id: p for p in packages}
-        self.gui = gui  # referencia a la interfaz pygame (opcional)
+        self.gui = gui  # reference to pygame (optional)
 
     def execute_action(self, action_name, params):
         try:
@@ -38,7 +38,7 @@ class PlanExecutor:
                 return True
 
         except Exception as e:
-            print(f"Error ejecutando acción {action_name}: {e}")
+            print(f"Error executing action {action_name}: {e}")
             return False
 
     def _parse_zone(self, name):
@@ -62,23 +62,24 @@ class PlanExecutor:
             with open(plan_file) as f:
                 lines = [l.strip().strip("()") for l in f if l.strip() and not l.startswith(";")]
         except FileNotFoundError:
-            print("No se encontró plan.txt")
+            print("File not found plan.txt")
             return
 
-        print("Ejecutando plan...")
+        print("Executing plan...")
         for line in lines:
             parts = line.split()
             action, params = parts[0], parts[1:]
             print(f"→ {action} {' '.join(params)}")
 
-            # Ejecutar acción
+            # Executing action
             self.execute_action(action, params)
 
-            # Redibujar GUI
+            # Redrawing GUI
             if self.gui:
                 self.gui.draw()
 
-            # Pequeña pausa entre acciones
+            # Small pause between actions
             time.sleep(0.7)
 
-        print("Plan ejecutado completamente.")
+        print("Plan executed completely.")
+
