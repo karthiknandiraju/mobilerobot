@@ -1,2 +1,2 @@
 # mobilerobot
-Mobile Robot Project
+Its a mobile robot AI project
